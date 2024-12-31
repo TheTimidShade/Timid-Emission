@@ -55,7 +55,6 @@ tts_emission_wave_pos = _startPos; publicVariable "tts_emission_wave_pos";
 [] remoteExec ["tts_emission_fnc_waveEffectMapSweeper", 0, false];
 
 private _waveKillTrigger = createTrigger ["EmptyDetector", _emissionStartPos];
-_waveKillTrigger setTriggerArea [(worldsize + 4000)/2, 40, 0, true];
 
 private _waveMarker = createMarker ["tts_emission_wave_debug", _waveKillTrigger];
 _waveMarker setMarkerShape "RECTANGLE";
@@ -66,11 +65,12 @@ private _waveMarker2 = createMarker ["tts_emission_wave_warning", _waveKillTrigg
 _waveMarker2 setMarkerType "mil_warning";
 _waveMarker2 setMarkerColor "ColorRed";
 
-// if W/E approach rotate trigger and marker 90 degrees
+// if W/E approach the trigger should extend vertically instead of horizontally
 if (!_useYcoord) then {
-	_waveKillTrigger setDir 90;
-	_waveKillTrigger setPos (getPos _waveKillTrigger);
+	_waveKillTrigger setTriggerArea [40, (worldsize + 4000)/2, 0, true];
 	"tts_emission_wave_debug" setMarkerDir 90;
+} else {
+	_waveKillTrigger setTriggerArea [(worldsize + 4000)/2, 40, 0, true];
 };
 
 if (!tts_emission_showEmissionOnMap) then {_waveMarker setMarkerAlpha 0; _waveMarker2 setMarkerAlpha 0;};
