@@ -71,6 +71,9 @@ ___
 ## Changelog
 Read below for complete changelog history.
 
+### 31/12/2024
+- Fixed East/West approach direction emissions not affecting AI properly.
+
 ### 14/12/2024
 - Fixed an issue where AI were immune to emissions after the first one if non-lethal emissions for AI was enabled.
 - Fixed an issue where AI might get stuck in the unconscious animation when ACE is enabled. (Thanks SilenceIsFatto)
